@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody playetRb;
     public float jumpForce = 10;
     public float gravityModifier;
+    public bool isOneGround = true;
 
 
     void Start()
@@ -18,9 +19,15 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isOneGround)
         {
             playetRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+            isOneGround = false;
         }
+    }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        isOneGround = true;
     }
 }
