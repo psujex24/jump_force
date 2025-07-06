@@ -8,12 +8,15 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         playetRb = GetComponent<Rigidbody>();
-        playetRb.AddForce(Vector3.up * 1000);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            playetRb.AddForce(Vector3.up * 10, ForceMode.Impulse);
+        }
     }
 }
